@@ -10,8 +10,6 @@ import {
 import LoginForm from "app/auth/components/LoginForm"
 
 export default function App({ Component, pageProps }: AppProps) {
-  console.log({ Component })
-  console.log({ pageProps })
   const getLayout = Component.getLayout || ((page) => page)
 
   return (

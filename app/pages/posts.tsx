@@ -1,4 +1,4 @@
-import { GetStaticProps, InferGetServerSidePropsType } from "blitz"
+import { GetStaticProps, InferGetServerSidePropsType, AuthenticationError } from "blitz"
 
 type Post = {
   author: string
@@ -6,7 +6,14 @@ type Post = {
 }
 
 export const getStaticProps: GetStaticProps = (context) => {
-  console.log({ context })
+  try {
+    throw new AuthenticationError()
+  } catch (error) {
+    if (error.name === "AuthenticationError") {
+      error.statusCode
+      error.message
+    }
+  }
 
   const posts = Math.random()
 
